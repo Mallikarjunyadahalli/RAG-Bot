@@ -1,0 +1,32 @@
+# LangChain
+langchain
+langchain-community
+langchain-core
+langchain-text-splitters
+
+# LLM - Google Gemini
+langchain-google-genai
+google-generativeai
+
+langchain-groq
+langchain-huggingface
+
+# Embeddings
+sentence-transformers
+
+# Vector Database
+chromadb
+
+# Document Loaders
+pypdf
+python-docx
+docx2txt
+
+# Web / HTTP
+requests
+
+# Streamlit UI
+streamlit
+
+# Environment Variables
+python-dotenv
