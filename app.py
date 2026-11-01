@@ -49,6 +49,9 @@ st.set_page_config(
 st.header("📃 Upload document - Ask Anything")
 st.caption("Upload your own data than ask anything about document.")
 
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
 if "document_uploaded" not in st.session_state:
     st.session_state.document_uploaded = False
 
@@ -75,6 +78,7 @@ if st.session_state.document_uploaded and st.session_state.vector_db:
 
     query = st.chat_input("Ask Anything...")
     if query:
+        st.session_state.messages.append({"role" : "user", "content" : query})
         st.chat_message("user").markdown(query)
         with st.spinner("Thinking..."):
             documents = st.session_state.vector_db.similarity_search(query, k=3)
@@ -104,4 +108,5 @@ if st.session_state.document_uploaded and st.session_state.vector_db:
             """
 
             result = llm.invoke(prompt)
+            st.session_state.messages.append({"role" : "ai", "content" : result.content})
             st.chat_message("ai").markdown(result.content)
